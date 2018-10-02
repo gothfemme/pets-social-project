@@ -1,0 +1,11 @@
+<h1><%= "#{@user.username}" %></h1>
+
+<% @user.posts.each do |post| %>
+<h3> <%= link_to " #{post.title}", post_path %><br></h3>
+
+
+
+<%= form_for @votes, method: :create do |f| %>
+ <%= f.button "Vote #{post.title}"  %>
+<%end%>
+<% end %>
