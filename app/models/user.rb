@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  before_save { email.downcase! }
   has_many :votes
   has_many :posts
   has_secure_password
