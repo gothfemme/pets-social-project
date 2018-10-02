@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root 'posts#index'
-  resources :votes
-  resources :posts
-  resources :users, only: [:index, :show]
+
+  resources :posts do
+    resources :votes, only: [:create, :destroy]
+  end
+  resources :users, only: [:show, :edit, :update]
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
   get '/login', to: 'sessions#new'

@@ -1,0 +1,17 @@
+<%= image_tag(@user.image) %>
+<%= @user.username %>
+<%= @user.location %>
+<%= @user.bio %>
+
+<h5>Posts this user has made:</h5>
+<ul>
+<% @user.posts.each do |post| %>
+<li><%= link_to post.title, post %></li>
+<% end %>
+</ul>
+<h5>Posts this user has liked:</h5>
+<ul>
+<% @user.votes.each do |like| %>
+<li><%= link_to like.post.title, like.post %></li>
+<% end %>
+</ul>

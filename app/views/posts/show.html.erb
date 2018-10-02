@@ -2,5 +2,12 @@
 <p><%= @post.title %></p>
 <p><%= @post.user.username %></p>
 <p><%= @post.create_date %></p>
-
+<p>Popularity:<%= @post.vote_count %></p>
+<% if current_user && @vote %>
+  <%= button_to 'Unlike this dog', post_vote_path(@post, @vote), method: :delete %>
+<% elsif current_user %>
+  <%= button_to 'Like this dog', post_votes_path(@post, @new_vote) %>
+<% else %>
+  <%= button_to 'Sign up to like this dog!', signup_path, method: :get %>
+<% end %>
 comments below
