@@ -7,6 +7,11 @@
             <li class="list-group-item">Posted by: <%= link_to @post.user.username, @post.user %></li>
             <li class="list-group-item text-right text-muted"><%= @post.create_date %></li>
           </ul>
+          <% if @post.user == current_user %>
+          <div class="card-footer text-right">
+            <%= link_to 'Delete', post_path(@post), method:"delete", class:"card-link" %>
+          </div>
+          <% end %>
       </div>
   </div>
 
@@ -52,11 +57,11 @@
     <%= form_for [@post, @comment]  do |f| %>
       <div class="form-group">
       <%= f.label :content, "Leave a comment:" %>
-      <%= f.text_area :content, class:"form-control" %>
+      <%= f.text_area :content, class:"form-control", disabled: !current_user %>
       </div>
       <div class="text-right">
         <div class="col">
-      <%= f.submit class:"btn btn-light"%>
+      <%= f.submit class:"btn btn-light", disabled: !current_user %>
       </div>
     </div>
     <% end %>

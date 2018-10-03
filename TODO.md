@@ -3,16 +3,14 @@
 
 # no seriously, styling
 
-# error messages
-
-# disable comment button when logged out
+# error messages and flash alerts
 
 # refactor
-
+# authorization for new post, users pages
 # forms need to be styled!!!!
 
 # stretch goals: follow? ? ? ? ? and upload images
-
+# delete account (super stretch)
 
 
 
