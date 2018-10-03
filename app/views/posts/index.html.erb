@@ -1,10 +1,55 @@
-<h1> All Dogs </h1>
+<div class"containe">
+  <div class="row justify-content-center">
+    <div class="col-sm-10">
+    <%= form_tag root_path, method:"get", class:"form-inline" do%>
+    <%= text_field_tag :search, params[:search], class:"form-control", placeholder:"Search by Title" %>
+
+    <label class="ml-3">Filter: </label>
+    <div class="btn-group btn-group-toggle ml-3" data-toggle="buttons">
+
+      <label for="filter" class="btn btn-dark">Popularity
+        <%= radio_button_tag :filter, 'pop'%>
+      </label>
+
+      <label for="filter" class="btn btn-dark">Date
+        <%= radio_button_tag :filter, 'date'%>
+      </label>
+
+
+      <label for="filter" class="btn btn-dark">ABC
+        <%= radio_button_tag :filter, 'abc'%>
+      </label>
+    </div>
+
+    <label class="ml-3">Order: </label>
+    <div class="btn-group btn-group-toggle ml-3" data-toggle="buttons">
+
+      <label for="order" class="btn btn-dark">ASC
+        <%= radio_button_tag :order, 'asc'%>
+      </label>
+
+      <label for="order" class="btn btn-dark">DESC
+        <%= radio_button_tag :order, 'desc'%>
+      </label>
+    </div>
+
+    <%= submit_tag 'Search', name: nil, class:"btn btn-dark ml-3" %>
+    <% end %>
+  </div>
+
+  <!-- <div class="col">
+    <%= link_to "Popularity", root_path(filter:"pop"),class:"btn btn-dark" %>
+  </div> -->
+  </div>
+</div>
+<hr>
+<br>
 <div class="container">
 <div class="row">
 
   <% @current_posts.each do |post| %>
-  <div class="col-sm-4">
-  <%= link_to(image_tag(post.image, width:"100%"), post) %>
+  <div class="col">
+  <%= link_to(image_tag(post.image, height:"300"), post) %>
   </div>
   <% end %>
 

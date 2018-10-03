@@ -1,14 +1,17 @@
-# add search to posts
-
-# comments
 
 # styling for EVERYTHING
+
+# no seriously, styling
 
 # error messages
 
 # disable comment button when logged out
 
+# refactor
 
+# forms need to be styled!!!!
+
+# stretch goals: follow? ? ? ? ? and upload images
 
 
 
