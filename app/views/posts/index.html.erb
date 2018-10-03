@@ -1,15 +1,21 @@
 <h1> All Dogs </h1>
+<div class="container">
+<div class="row">
 
-<div class="card-columns">
   <% @current_posts.each do |post| %>
-  <div class="card">
-  <%= link_to(image_tag(post.image, class:"card-img", width:"100%"), post) %>
+  <div class="col-sm-4">
+  <%= link_to(image_tag(post.image, width:"100%"), post) %>
   </div>
   <% end %>
+
 </div>
+</div>
+<div class="container">
 <% if @previous_page %>
-<%= link_to "Previous Page", root_path(query: "#{@previous_page}") %>
+<%= link_to "Previous Page", root_path(query: "#{@previous_page}"), class:"btn btn-outline-dark", role:"button" %>
 <% end %>
 <% if @next_page %>
-<%= link_to "Next Page", root_path(query: "#{@next_page}") %>
+<%= link_to "Next Page", root_path(query: "#{@next_page}"), class:"btn btn-outline-dark", role:"button" %>
 <% end %>
+
+</div>

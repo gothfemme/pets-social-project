@@ -1,7 +1,18 @@
-<%= image_tag(@user.image) %>
-<%= @user.username %>
-<%= @user.location %>
-<%= @user.bio %>
+<div class="row">
+<div class="col-sm-6">
+    <div class="card">
+      <% if @user.image %>
+      <%= image_tag @user.image, width:"100%", class:"card-img-top" %>
+      <% else %>
+      <%= image_tag "https://via.placeholder.com/400x300", width:"100%", class:"card-img-top" %>
+      <% end %>
+        <h3 class="card-header">@<%= @user.username %></h3>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Location: <%= @user.location %></li>
+        <li class="list-group-item">Bio: <%= @user.bio %></li>
+      </ul>
+    </div>
+</div>
 
 <h5>Posts this user has made:</h5>
 <ul>
@@ -15,3 +26,4 @@
 <li><%= link_to like.post.title, like.post %></li>
 <% end %>
 </ul>
+</div>

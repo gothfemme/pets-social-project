@@ -1,13 +1,29 @@
-<%= image_tag @post.image, width:"400" %>
-<p><%= @post.title %></p>
-<p><%= @post.user.username %></p>
-<p><%= @post.create_date %></p>
-<p>Popularity:<%= @post.vote_count %></p>
-<% if current_user && @vote %>
-  <%= button_to 'Unlike this dog', post_vote_path(@post, @vote), method: :delete %>
-<% elsif current_user %>
-  <%= button_to 'Like this dog', post_votes_path(@post, @new_vote) %>
-<% else %>
-  <%= button_to 'Sign up to like this dog!', signup_path, method: :get %>
-<% end %>
+<div class="row justify-content-sm-center">
+  <div class="col-sm-6">
+      <div class="card">
+        <%= image_tag @post.image, width:"100%%", class:"card-img-top" %>
+          <h3 class="card-header"><%= @post.title %></h3>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Posted by: <%= link_to @post.user.username, @post.user %></li>
+            <li class="list-group-item text-right text-muted"><%= @post.create_date %></li>
+          </ul>
+      </div>
+  </div>
+
+  <div class="col-sm-2">
+    <div class="card">
+        <h5 class="card-header text-center">Pup-ularity</h3>
+          <h2 class="card-header text-center"><%= @post.vote_count %></h2>
+      <% if current_user && @vote %>
+        <%= button_to 'Unlike', post_vote_path(@post, @vote), method: :delete, class:"btn btn-block btn-lg btn-light" %>
+      <% elsif current_user %>
+        <%= button_to 'Like', post_votes_path(@post, @new_vote), class:"btn btn-block btn-lg btn-light" %>
+      <% else %>
+        <%= button_to 'Sign up to like!', signup_path, method: :get, class:"btn btn-block btn-lg btn-light" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<hr>
+
 comments below
