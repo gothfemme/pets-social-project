@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :votes, only: [:create, :destroy]
+    resources :comments, only: [:create, :edit, :update, :destroy]
   end
   resources :users, only: [:show, :edit, :update]
   get '/signup', to: 'users#new'

@@ -4,7 +4,9 @@
 
 # styling for EVERYTHING
 
+# error messages
 
+# disable comment button when logged out
 
 
 

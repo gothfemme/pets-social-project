@@ -24,6 +24,7 @@ class PostsController < ApplicationController
     @post = Post.includes(:user).find(params[:id])
     @vote = Vote.find_by(post_id:params[:id],user:current_user)
     @new_vote = Vote.new
+    @comment = Comment.new
   end
 
   def new

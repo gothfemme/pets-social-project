@@ -2,6 +2,8 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :votes
   has_many :voters, through: :votes, source: :user
+  has_many :comments
+  has_many :commenters, through: :comments, source: :user
 
   def vote_count
     self.votes.count
