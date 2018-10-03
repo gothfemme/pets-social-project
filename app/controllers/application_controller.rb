@@ -1,12 +1,11 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
+  include PostsHelper
 
+  private
 
-  def first_page?(range)
-    range.includes(0)
+  def login_authorize
+    redirect_to login_path unless logged_in?
   end
 
-  def last_page?(range)
-    range.includes(Post.all.length)
-  end
 end

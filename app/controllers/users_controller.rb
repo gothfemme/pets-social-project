@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :login_authorize, only: [:show, :edit, :update]
+  before_action :get_user, only: [:show, :edit]
 
   def new
     @user = User.new
@@ -8,25 +10,23 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      redirect_to @user
+      redirect_to root_path
     else
       render 'new'
     end
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def edit
-    @user = User.find(params[:id])
-    unless @user.id == session[:user_id]
+    unless @user == current_user # authorization
       redirect_to root_path
     end
   end
 
-  def update
-    if current_user.update(user_params)
+  def update # needs authorization
+    if current_user.update(user_params) # authorization
       redirect_to user_path(current_user)
     else
       @user = current_user
@@ -46,6 +46,10 @@ class UsersController < ApplicationController
       :password,
       :password_confirmation
     )
+  end
+
+  def get_user
+    @user = User.find(params[:id])
   end
 
 end
