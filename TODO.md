@@ -6,8 +6,6 @@
 # error messages and flash alerts
 
 # refactor
-# authorization for new post, users pages
-# forms need to be styled!!!!
 
 # stretch goals: follow? ? ? ? ? and upload images
 # delete account (super stretch)

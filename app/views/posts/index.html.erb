@@ -1,3 +1,9 @@
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
 <div class"container">
   <div class="row justify-content-center">
     <div class="col-sm-10">
@@ -7,16 +13,16 @@
     <label class="ml-3">Filter: </label>
     <div class="btn-group btn-group-toggle ml-3" data-toggle="buttons">
 
-      <label for="filter" class="btn btn-dark">Popularity
+      <label for="filter" class="btn btn-secondary">Popularity
         <%= radio_button_tag :filter, 'pop'%>
       </label>
 
-      <label for="filter" class="btn btn-dark">Date
+      <label for="filter" class="btn btn-secondary">Date
         <%= radio_button_tag :filter, 'date'%>
       </label>
 
 
-      <label for="filter" class="btn btn-dark">ABC
+      <label for="filter" class="btn btn-secondary">ABC
         <%= radio_button_tag :filter, 'abc'%>
       </label>
     </div>
@@ -24,16 +30,16 @@
     <label class="ml-3">Order: </label>
     <div class="btn-group btn-group-toggle ml-3" data-toggle="buttons">
 
-      <label for="order" class="btn btn-dark">ASC
+      <label for="order" class="btn btn-secondary">ASC
         <%= radio_button_tag :order, 'asc'%>
       </label>
 
-      <label for="order" class="btn btn-dark">DESC
+      <label for="order" class="btn btn-secondary">DESC
         <%= radio_button_tag :order, 'desc'%>
       </label>
     </div>
 
-    <%= submit_tag 'Search', name: nil, class:"btn btn-dark ml-3" %>
+    <%= submit_tag 'Search', name: nil, class:"btn btn-secondary ml-3" %>
     <% end %>
   </div>
 
@@ -49,7 +55,7 @@
 
   <% @current_posts.each do |post| %>
   <div class="col-4">
-    <div class="thumb-post">
+    <div class="thumb-post" data-toggle="tooltip" data-placement="bottom" title="<%= post.title %>   ♥ <%= post.vote_count %>">
       <%= link_to(image_tag(post.image, class:"img-thumbnail bg-light"), post) %>
     </div>
   </div>

@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def update # needs authorization
+  def update
     if current_user.update(user_params) # authorization
       redirect_to user_path(current_user)
     else

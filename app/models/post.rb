@@ -5,11 +5,15 @@ class Post < ApplicationRecord
   has_many :comments
   has_many :commenters, through: :comments, source: :user
 
+  validates :title, presence: true
+  validates :image, presence: true
+
   def vote_count
     self.votes.count
   end
 
   def self.search_and_filter(search_term, filter_term, order_term)
+    order_term ||= "asc"
     searched = self.search(search_term)
     if filter_term.nil?
       return searched
@@ -22,11 +26,11 @@ class Post < ApplicationRecord
     if search_term
       self.where('title LIKE ?', "%#{search_term}%")
     else
-      self.order('created_at DESC')
+      self.all
     end
   end
 
-  def self.filter(filter_term, order_term="asc")
+  def self.filter(filter_term, order_term)
     if filter_term
       case filter_term
       when "pop"
