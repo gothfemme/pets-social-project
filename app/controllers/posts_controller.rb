@@ -22,6 +22,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(title:params[:post][:title],image:params[:post][:image],user:current_user)
     if @post.save
+      flash[:success] = "Post successfully created!"
       redirect_to @post
     else
       render 'new'
@@ -30,6 +31,7 @@ class PostsController < ApplicationController
 
   def destroy
     if @post.user == current_user
+      flash[:success] = "Post successfully deleted!"
       @post.destroy
     end
     redirect_to root_path

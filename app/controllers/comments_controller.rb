@@ -6,9 +6,10 @@ class CommentsController < ApplicationController
   def create
     comment = Comment.new(content:params[:comment][:content],user:current_user,post_id:params[:post_id])
     if comment.save
+      flash[:success] = "Comment successfully created!"
       redirect_to post_path(@post)
     else
-      # flash error
+      flash[:danger] = "Comment cannot be blank."
       @comment = Comment.new
       render "posts/show"
     end
@@ -22,9 +23,14 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.user == current_user
-      @comment.update(content:params[:comment][:content])
+      if @comment.update(content:params[:comment][:content])
+        flash[:success] = "Comment successfully updated!"
+      else
+        flash[:danger] = "Comment cannot be blank."
+        return render 'posts/show'
+      end
     else
-      # flash error
+      flash[:danger] = "You are not authorized to edit this comment."
     end
     redirect_to post_path(@post)
   end
@@ -32,8 +38,9 @@ class CommentsController < ApplicationController
   def destroy
     if @comment.user == current_user
       @comment.destroy
+      flash[:success] = "Comment successfully deleted!"
     else
-      # flash error
+      flash[:danger] = "You are not authorized to delete this comment."
     end
     redirect_to post_path(@post)
   end

@@ -1,29 +1,35 @@
-<div class="row">
-<div class="col-sm-6">
-    <div class="card">
-      <% if @user.image %>
-      <%= image_tag @user.image, width:"100%", class:"card-img-top" %>
-      <% else %>
-      <%= image_tag "https://via.placeholder.com/400x300", width:"100%", class:"card-img-top" %>
-      <% end %>
-        <h3 class="card-header">@<%= @user.username %></h3>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Location: <%= @user.location %></li>
-        <li class="list-group-item">Bio: <%= @user.bio %></li>
-      </ul>
-    </div>
+<div class="container">
+  <div class="row">
+  <div class="col-sm-6">
+      <div class="card">
+        <% if @user.image %>
+        <%= image_tag @user.image, width:"100%", class:"card-img-top" %>
+        <% else %>
+        <%= image_tag "https://via.placeholder.com/400x300", width:"100%", class:"card-img-top" %>
+        <% end %>
+          <h3 class="card-header">@<%= @user.username %></h3>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Location: <%= @user.location %></li>
+          <li class="list-group-item">Bio: <%= @user.bio %></li>
+        </ul>
+      </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="list-group">
+    <h5 class="list-group-item bg-dark text-light">Recent Posts:</h5>
+    <% @user.recent_posts.each do |post| %>
+    <%= link_to post.title, post, class:"list-group-item list-group-item-action" %>
+  <% end %>
+</div>
 </div>
 
-<h5>Posts this user has made:</h5>
-<ul>
-<% @user.posts.each do |post| %>
-<li><%= link_to post.title, post %></li>
-<% end %>
-</ul>
-<h5>Posts this user has liked:</h5>
-<ul>
-<% @user.votes.each do |like| %>
-<li><%= link_to like.post.title, like.post %></li>
-<% end %>
-</ul>
+  <div class="col-sm-3">
+<div class="list-group">
+  <h5 class="list-group-item bg-dark text-light">Recent Likes:</h5>
+  <% @user.recent_likes.each do |post| %>
+  <%= link_to post.title, post, class:"list-group-item list-group-item-action" %>
+  <% end %>
+</div>
+</div>
+  </div>
 </div>

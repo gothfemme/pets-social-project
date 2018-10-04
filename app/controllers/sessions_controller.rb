@@ -8,12 +8,14 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to root_path
     else
+      flash.now[:danger] = "Invalid email/password combination."
       render 'new'
     end
   end
 
   def destroy
     log_out
+    flash[:success] = "Successfully logged out!"
     redirect_to root_path
   end
 end

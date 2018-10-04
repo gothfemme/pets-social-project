@@ -6,12 +6,15 @@ $(function () {
 
 <div class"container">
   <div class="row justify-content-center">
-    <div class="col-sm-10">
+
+    <div class="col-2">
     <%= form_tag root_path, method:"get", class:"form-inline" do%>
     <%= text_field_tag :search, params[:search], class:"form-control", placeholder:"Search by Title" %>
+    </div>
 
-    <label class="ml-3">Filter: </label>
-    <div class="btn-group btn-group-toggle ml-3" data-toggle="buttons">
+  <div class="col-2">
+    <!-- <label>Filter: </label> -->
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
       <label for="filter" class="btn btn-secondary">Popularity
         <%= radio_button_tag :filter, 'pop'%>
@@ -27,8 +30,12 @@ $(function () {
       </label>
     </div>
 
-    <label class="ml-3">Order: </label>
-    <div class="btn-group btn-group-toggle ml-3" data-toggle="buttons">
+  </div>
+
+  <div class="col-2">
+
+    <!-- <label>Order: </label> -->
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
       <label for="order" class="btn btn-secondary">ASC
         <%= radio_button_tag :order, 'asc'%>
@@ -38,14 +45,12 @@ $(function () {
         <%= radio_button_tag :order, 'desc'%>
       </label>
     </div>
-
-    <%= submit_tag 'Search', name: nil, class:"btn btn-secondary ml-3" %>
+  </div>
+    <div class="col-1">
+    <%= submit_tag 'Search', name: nil, class:"btn btn-secondary" %>
+  </div>
     <% end %>
   </div>
-
-  <!-- <div class="col">
-    <%= link_to "Popularity", root_path(filter:"pop"),class:"btn btn-dark" %>
-  </div> -->
   </div>
 </div>
 <hr>
@@ -64,11 +69,12 @@ $(function () {
 </div>
 </div>
 <div class="container">
+  <div class="row justify-content-center">
 <% if @previous_page %>
-<%= link_to "Previous Page", root_path(query: "#{@previous_page}"), class:"btn btn-outline-dark", role:"button" %>
+<%= link_to "Previous Page", root_path(query: "#{@previous_page}"), class:"btn btn-secondary", role:"button" %>
 <% end %>
 <% if @next_page %>
-<%= link_to "Next Page", root_path(query: "#{@next_page}"), class:"btn btn-outline-dark", role:"button" %>
+<%= link_to "Next Page", root_path(query: "#{@next_page}"), class:"btn btn-secondary ml-1", role:"button" %>
 <% end %>
-
+</div>
 </div>

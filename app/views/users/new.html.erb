@@ -3,6 +3,18 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-sm-6">
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <div class="alert alert-danger">
+            The form contains <%= pluralize(@user.errors.count, "error") %>.
+          </div>
+          <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
       <%= form_for @user, url: signup_path do |f| %>
 
     <div class="form-group">

@@ -1,12 +1,5 @@
 
-# styling for EVERYTHING
-
-# no seriously, styling
-
-# error messages and flash alerts
-
-# refactor
-
+# page numbers
 # stretch goals: follow? ? ? ? ? and upload images
 # delete account (super stretch)
 
