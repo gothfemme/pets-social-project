@@ -1,20 +1,25 @@
 module PostsHelper
 
   def get_current_page_range(array, params)
-    # page_length = 20
     view_range = (0..@page_length)
     if params
-      n = params.to_i
-      if n-@page_length < 0
-        n = @page_length
-      elsif n-@page_length >= array.length
-        n = array.length
+      num = params.to_i
+      if num-@page_length < 0
+        view_range
+      elsif num-@page_length >= array.length
+        (array.length-@page_length..array.length)
       else
-        view_range = (n-@page_length..n)
+        (num-@page_length..num)
       end
     else
       view_range
     end
+  end
+
+  def get_pages(posts, range)
+    @previous_page = range.min unless range.min <= 0
+    @next_page = range.max + @page_length unless range.max >= posts.length
+    @current_posts = posts[range]
   end
 
 end

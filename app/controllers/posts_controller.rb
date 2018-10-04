@@ -5,10 +5,8 @@ class PostsController < ApplicationController
   def index
     posts = Post.search_and_filter(params[:search],params[:filter],params[:order])
     @page_length = 20
-    current_page_range = get_current_page_range(posts, params[:query])
-    @previous_page = current_page_range.min unless current_page_range.min <= 0
-    @next_page = current_page_range.max + @page_length unless current_page_range.max > posts.length
-    @current_posts = posts[current_page_range]
+    range = get_current_page_range(posts, params[:query])
+    get_pages(posts, range)
   end
 
   def show

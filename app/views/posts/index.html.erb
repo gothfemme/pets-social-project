@@ -48,8 +48,10 @@
 <div class="row">
 
   <% @current_posts.each do |post| %>
-  <div class="col">
-  <%= link_to(image_tag(post.image, height:"300"), post) %>
+  <div class="col-4">
+    <div class="thumb-post">
+      <%= link_to(image_tag(post.image, class:"img-thumbnail bg-light"), post) %>
+    </div>
   </div>
   <% end %>
 
