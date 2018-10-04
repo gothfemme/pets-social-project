@@ -34,10 +34,11 @@
 <div class="row justify-content-sm-center">
   <% @post.comments.each do |comment| %>
   <div class="col-sm-8">
-      <div class="card">
+      <div class="card mb-2">
         <div class="card-body">
           <h4 class="card-title"><%= link_to comment.user.username, comment.user %></h4>
           <p class="card-text"><%= comment.content %></p>
+          <small class="text-muted"> Posted at <%= comment.create_date %> </small>
         </div>
         <div class= "card-footer text-right">
           <% if comment.user == current_user %>
