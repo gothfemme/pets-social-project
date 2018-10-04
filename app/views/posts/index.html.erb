@@ -61,7 +61,7 @@ $(function () {
   <% @current_posts.each do |post| %>
   <div class="col-4">
     <div class="thumb-post" data-toggle="tooltip" data-placement="bottom" title="<%= post.title %>   ♥ <%= post.vote_count %>">
-      <%= link_to(image_tag(post.image, class:"img-thumbnail bg-light"), post) %>
+      <%= link_to(image_tag(post.image.url, class:"img-thumbnail bg-light"), post) %>
     </div>
   </div>
   <% end %>

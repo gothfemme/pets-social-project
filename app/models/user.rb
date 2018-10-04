@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments
   has_many :commented_posts, through: :comments, source: :post
+  mount_uploader :image, ImageUploader
 
   has_secure_password
   validates :username,  presence: true, length: { maximum: 50 }, uniqueness: {case_sensitive: false}

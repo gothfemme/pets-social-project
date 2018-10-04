@@ -1,11 +1,5 @@
 
 # page numbers
-# stretch goals: follow? ? ? ? ? and upload images
-# delete account (super stretch)
-
-
-
-
 
 USER:
 username

@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   has_many :voters, through: :votes, source: :user
   has_many :comments
   has_many :commenters, through: :comments, source: :user
+  mount_uploader :image, ImageUploader
 
   validates :title, presence: true
   validates :image, presence: true

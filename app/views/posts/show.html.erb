@@ -1,7 +1,7 @@
 <div class="row justify-content-sm-center">
   <div class="col-sm-6">
       <div class="card">
-        <%= image_tag @post.image, width:"100%%", class:"card-img-top" %>
+        <%= image_tag @post.image.url, width:"100%%", class:"card-img-top" %>
           <h3 class="card-header"><%= @post.title %></h3>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Posted by: <%= link_to @post.user.username, @post.user %></li>
@@ -62,7 +62,7 @@
       </div>
       <div class="text-right">
         <div class="col">
-      <%= f.submit class:"btn btn-light", disabled: !current_user %>
+      <%= f.submit class:"btn btn-secondary", disabled: !current_user %>
       </div>
     </div>
     <% end %>

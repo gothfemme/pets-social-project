@@ -5,26 +5,39 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Post.destroy_all
-User.destroy_all
-dogs = ["00186969-c51d-462b-948b-30a7e1735908.jpg","00564ba3-e5cb-4b2b-8d97-c65a9ef26c23.png","00b417af-0b5f-42d7-9ad0-6aab6c3db491.jpg","027eef85-ccc1-4a66-8967-5d74f34c8bb4.jpg","03024628-188b-408e-a853-d97c9f04f903.jpg","037c01a0-99b3-4757-90b5-04df9be427a6.JPG","0415ca3e-0e99-4afa-bec6-bd8a4a7ff6ff.PNG","046e5758-d1ef-436f-b7e2-530134562445.jpg","054dce82-51c9-49d5-bc7c-4d76e8288d33.jpg","05f4b372-d8ff-42f0-8c11-b78c45d9eaa1.jpg","062013b4-8bad-4a6a-a69c-e4de7fdd86d8.jpg","068fc183-d4e3-4780-b01c-6cce0d019d13.jpg","06c96920-38c5-4883-95ac-0968a4ecd4f1.JPG","06ec5d00-6da0-46cb-ab4a-f6ea1e6a461f.gif","075bfcba-f13c-43a9-983c-740bcce9d876.png","07688b1f-08ee-46f2-b475-19446a9bbcb4.jpg","07c4e089-a7da-430a-ac09-a0da419efefa.JPG","07e51206-2967-4632-ad03-a7f12675bc55.jpg","07fcc953-0502-4cb6-bc0e-9b9d6904442d.jpg","0886de63-9a5d-41c5-b750-4e7633f63ce1.jpg","08b34a90-ffc6-4f80-829a-2c3e7414f26e.jpg","08f5398d-7f89-47da-a5cd-1ed74967dc1f.jpg","09584fb1-baa4-45b7-a801-cff37a0a4c74.jpg"]
-
-10.times do
-  password = Faker::Internet.password
-  User.create(
-    username:Faker::Internet.username,
-    email:Faker::Internet.email,
-    bio:Faker::Hipster.sentence,
-    location:Faker::Address.city,
-    password:password,
-    password_confirmation:password
-    )
+# Post.destroy_all
+# User.destroy_all
+#
+# 200.times do
+#   password = Faker::Internet.password
+#   User.create(
+#     username:Faker::Internet.username,
+#     email:Faker::Internet.email,
+#     bio:Faker::Hipster.sentence,
+#     location:Faker::Address.city,
+#     password:password,
+#     password_confirmation:password
+#     )
+# end
+#
+# dogs = Dir.glob("public/uploads/seed/*")
+#
+# dogs.each do |dog|
+#   post = Post.new(
+#     title:Faker::Dog.name,
+#     user: User.all.sample
+#   )
+#   post.image = Rails.root.join(dog).open
+#   post.save
+# end
+250.times do
+  Comment.create(
+    content:Faker::Hipster.sentence,
+    user:User.all.sample,
+    post:Post.all.sample
+  )
 end
 
-200.times do
-  Post.create(
-    title:Faker::Dog.meme_phrase,
-    image:"http://random.dog/#{dogs.sample}",
-    user: User.all.sample
-  )
+1000.times do
+  Vote.create(user:User.all.sample, post:Post.all.sample)
 end
