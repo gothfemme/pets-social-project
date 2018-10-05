@@ -5,14 +5,18 @@ $(function () {
 </script>
 
 <div class"container">
-  <div class="row justify-content-center">
 
-    <div class="col-2">
+
+
     <%= form_tag root_path, method:"get", class:"form-inline" do%>
+    <div class="container mx-auto">
+      <div class="row  justify-content-center">
+
+    <div class="col-md-3">
     <%= text_field_tag :search, params[:search], class:"form-control", placeholder:"Search by Title" %>
     </div>
 
-  <div class="col-2">
+  <div class="col-md-3">
     <!-- <label>Filter: </label> -->
     <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
@@ -32,11 +36,9 @@ $(function () {
 
   </div>
 
-  <div class="col-2">
+  <div class="col-md-2">
 
-    <!-- <label>Order: </label> -->
     <div class="btn-group btn-group-toggle" data-toggle="buttons">
-
       <label for="order" class="btn btn-secondary">ASC
         <%= radio_button_tag :order, 'asc'%>
       </label>
@@ -46,11 +48,13 @@ $(function () {
       </label>
     </div>
   </div>
-    <div class="col-1">
-    <%= submit_tag 'Search', name: nil, class:"btn btn-secondary" %>
+    <div class="col-md-1">
+    <%= submit_tag 'Submit Search', name: nil, class:"btn btn-secondary" %>
+  </div>
+
+    </div>
   </div>
     <% end %>
-  </div>
   </div>
 </div>
 <hr>
@@ -64,6 +68,7 @@ $(function () {
       <%= link_to(image_tag(post.image.url, class:"img-thumbnail bg-light"), post) %>
     </div>
   </div>
+
   <% end %>
 
 </div>
@@ -71,10 +76,10 @@ $(function () {
 <div class="container">
   <div class="row justify-content-center">
 <% if @previous_page %>
-<%= link_to "Previous Page", root_path(query: "#{@previous_page}"), class:"btn btn-secondary", role:"button" %>
+<%= link_to "Previous Page", root_path(query: "#{@previous_page}"), class:"btn btn-outline-danger", role:"button" %>
 <% end %>
 <% if @next_page %>
-<%= link_to "Next Page", root_path(query: "#{@next_page}"), class:"btn btn-secondary ml-1", role:"button" %>
+<%= link_to "Next Page", root_path(query: "#{@next_page}"), class:"btn btn-outline-danger ml-1", role:"button" %>
 <% end %>
 </div>
 </div>

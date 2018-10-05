@@ -27,7 +27,7 @@ class Post < ApplicationRecord
     if search_term
       self.where('title LIKE ?', "%#{search_term}%")
     else
-      self.all
+      self.all.order('created_at DESC')
     end
   end
 

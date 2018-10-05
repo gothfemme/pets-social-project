@@ -17,8 +17,8 @@
 
   <div class="col-sm-2">
     <div class="card">
-        <h5 class="card-header text-center">Pup-ularity</h3>
-          <h2 class="card-header text-center"><%= @post.vote_count %></h2>
+        <!-- <h5 class="card-header text-center">Popularity</h3> -->
+          <h1 class="display-4 card-header text-center">♥ <strong><%= @post.vote_count %></strong></h1>
       <% if current_user && @vote %>
         <%= button_to 'Unlike', post_vote_path(@post, @vote), method: :delete, class:"btn btn-block btn-lg btn-light" %>
       <% elsif current_user %>
